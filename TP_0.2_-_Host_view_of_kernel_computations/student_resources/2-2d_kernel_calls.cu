@@ -23,8 +23,9 @@ int main() {
   //@@ Initialize grid and block sizes for later kernel launches.
   //@@ Use as many threads as possible.
   //@@ create 2D grid and blocks, you need to find the right structure to store those sizes
-  dim3 threads(16, 16);
-  dim3  blocks(cols / threads.x, rows / threads.y);
+  dim3 threads(32,32);
+  dim3 blocks((cols+threads.x-1)/threads.x,
+              (rows+threads.y-1)/threads.y);
   size_t pitch;  //< we will store the pitch value in this variable
 
   // Allocate an 2D buffer with padding
