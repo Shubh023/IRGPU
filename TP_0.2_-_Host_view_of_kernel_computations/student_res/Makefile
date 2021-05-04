@@ -40,7 +40,7 @@ clean:
 # Each binary is based only on the source ".cu" file.
 # We activate debugging information.
 $(binaries): %: %.cu kernels.o
-	nvcc -arch=sm_30 -o $@ -g -G -I. $< kernels.o
+	nvcc -arch=sm_86 -o $@ -g -G -I. $< kernels.o
 	@echo "Target $@: COMPLETE"
 
 # kernels.o: kernels.cu
